@@ -1,0 +1,39 @@
+{
+    "name": "postyou/deepLogin",
+    "description": "This is a Contao Extension for (frontend) deep-link login",
+    "keywords": [
+        "contao",
+        "deep-link",
+        "login"
+    ],
+    "type": "contao-module",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Gerald Meier",
+            "role": "Developer"
+        },
+        {
+            "name":"postyou",
+            "homepage":"http://postyou.de"
+        }
+    ],
+    "support": {
+        "email": "kontakt@postyou.de",
+        "issues": "https://github.com/postyou/contao-deep-login/issues?direction=desc&sort=created&state=open",
+        "source": "https://github.com/postyou/contao-deep-login"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "contao/core": ">=3.2,<4.0",
+        "contao-community-alliance/composer-plugin": "~2.0"
+
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/deepLogin"
+            }
+        }
+    }
+}
