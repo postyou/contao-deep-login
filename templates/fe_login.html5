@@ -1,0 +1,11 @@
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('content'); ?>
+
+<?php
+if(isset($this->html) && !empty($this->html))
+    echo $this->html;
+else
+    echo("<div class=\"login_error\"><p>Login fault!</p></div>");
+?>
+<?php $this->endblock(); ?>
+
