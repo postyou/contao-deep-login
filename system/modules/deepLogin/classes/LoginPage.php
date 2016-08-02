@@ -1,14 +1,26 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Gerald
- * Date: 29.01.2015
- * Time: 13:47
+ * Contao Open Source CMS
+ *
+ * Copyright (c) 2005-2014 Leo Feyer
+ *
+ * @package   deepLogin
+ * @author    Gerald Meier
+ * @license   LGPL
+ * @copyright Postyou 2016
  */
 
+ /**
+ * Namespace
+ */
 namespace postyou;
 
-
+/**
+ * Class easyFavicon
+ *
+ * @copyright  Postyou 2016
+ * @author     Gerald Meier
+ */
 use Contao\Config;
 use Contao\Input;
 use Contao\Message;

@@ -1,4 +1,14 @@
 <?php
+/**
+ * Contao Open Source CMS
+ *
+ * Copyright (c) 2005-2014 Leo Feyer
+ *
+ * @package   deepLogin
+ * @author    Gerald Meier
+ * @license   LGPL
+ * @copyright Postyou 2016
+ */
 
 $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .=
     ';{login_legend:hide},globalLogin';

@@ -24,4 +24,8 @@ install:
             "url": "https://github.com/postyou/contao-deep-login"
         }
 ],
-   
+
+
+---------------------------------------
+
+Die Verwendeten Icons Stammen aus dem kostenlosen [FAM FAM FAM](http://www.famfamfam.com/lab/icons/silk/) Iconset.
