@@ -1,5 +1,6 @@
 <?php
-$GLOBALS['TL_DCA']['tl_page']['palettes']['login'] = '{title_legend},title,alias,type;
+$GLOBALS['TL_DCA']['tl_page']['palettes']['login'] = '
+{title_legend},title,alias,type;
 {meta_legend},pageTitle,robots,description;
 {layout_legend:hide},includeLayout;
 {cache_legend:hide},includeCache;
@@ -11,15 +12,13 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['login'] = '{title_legend},title,alias
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['guests']['load_callback'][]=array('tl_page_deep_login', 'check4LoginPageType');
 
-$GLOBALS['TL_DCA']['tl_page']['list']['operations']['articles']['button_callback']=
-    array('tl_page_deep_login', 'editArticles');
+$GLOBALS['TL_DCA']['tl_page']['list']['operations']['articles']['button_callback']=array('tl_page_deep_login', 'editArticles');
+
 foreach($GLOBALS['TL_DCA']['tl_page']['config']['onsubmit_callback'] as $key=>&$callbacks){
     if(in_array("generateArticle",$callbacks)){
         $GLOBALS['TL_DCA']['tl_page']['config']['onsubmit_callback'][$key]=array('tl_page_deep_login', 'generateArticle');
     }
 }
-
-
 
 Class tl_page_deep_login extends \Backend {
 
@@ -31,6 +30,16 @@ Class tl_page_deep_login extends \Backend {
         parent::__construct();
         $this->import('BackendUser', 'User');
     }
+
+    public function loadCallBack($varValue,$dc){
+        $res=$dc->Database->prepare("Select autoforward from tl_page where id=?")->execute($dc->id)->fetchAssoc();
+        return $res['autoforward'];
+    }
+    public function saveCallBack($varValue,$dc){
+        $res=$dc->Database->prepare("Update tl_page set autoforward=? where id=?")->execute($varValue,$dc->id);
+        return null;
+    }
+
 
     function check4LoginPageType($varValue,$dc){
         if($dc->activeRecord->type=="login") {

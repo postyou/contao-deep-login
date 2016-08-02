@@ -9,6 +9,7 @@
 namespace postyou;
 
 
+use Contao\Config;
 use Contao\Input;
 use Contao\Message;
 use Contao\PageError403;
@@ -25,36 +26,33 @@ class LoginPage extends \PageRegular{
         if(\Input::get('logout'))
             if(@$this->User->logout())
                 $loggedIn=false;
-
-        if (!$loggedIn && $objPage->type!="login" && ($this->isProtected($objPage) || $objPage->type=="error_403")) {
-            $loginPage=PageModel::findOneBy("type","login");
-            if(isset($loginPage) && $loginPage->published==1){
-                $loginPage->loadDetails();
-                $objPage=$loginPage;
-                $handler=new LoginPage(\Environment::get("request"));
-                $handler->generate($loginPage);
-                exit();
-            } else {
-                System::log("Please create a Login-Page urgently!!","LoginPage\checkLoginStatus",TL_ERROR);
-                if($objPage->type=="error_403")
-                    return;
-                $page403_model=\PageModel::find403ByPid($objPage->rootId);
-                if(isset($page403_model) && $page403_model->published==1){
-                    $page403_model->loadDetails();
-                    $objPage=$page403_model;
-                    $handler=new PageError403();
-                    $handler->generate($page403_model->id,$page403_model->rootId);
+            if (!$loggedIn && $objPage->type!="login" && (Config::get("globalLogin")==1 || $objPage->type=="error_403")) {
+                $loginPage=PageModel::findOneBy("type","login");
+                if(isset($loginPage) && $loginPage->published==1){
+                    $loginPage->loadDetails();
+                    $objPage=$loginPage;
+                    $handler=new LoginPage(\Environment::get("request"));
+                    $handler->generate($loginPage);
                     exit();
                 } else {
-                    System::log("Please create a 403-Error-Page urgently!!","LoginPage\checkLoginStatus",TL_ERROR);
-                    $objPage->template      = 'fe_login';
-                    $objPage->templateGroup = $objLayout->templates;
-                    $objPageRegular->createTemplate($objPage, $objLayout);
+                    System::log("Please create a Login-Page urgently!!","LoginPage\checkLoginStatus",TL_ERROR);
+                    if($objPage->type=="error_403")
+                        return;
+                    $page403_model=\PageModel::find403ByPid($objPage->rootId);
+                    if(isset($page403_model) && $page403_model->published==1){
+                        $page403_model->loadDetails();
+                        $objPage=$page403_model;
+                        $handler=new PageError403();
+                        $handler->generate($page403_model->id,$page403_model->rootId);
+                        exit();
+                    } else {
+                        System::log("Please create a 403-Error-Page urgently!!","LoginPage\checkLoginStatus",TL_ERROR);
+                        $objPage->template      = 'fe_login';
+                        $objPage->templateGroup = $objLayout->templates;
+                        $objPageRegular->createTemplate($objPage, $objLayout);
+                    }
                 }
             }
-        }
-
-
     }
 
 
