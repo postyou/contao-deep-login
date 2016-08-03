@@ -24,8 +24,8 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Classes
-	'postyou\LoginPage'           => 'system/modules/deepLogin/classes/LoginPage.php',
-	'postyou\ModuleLoginDeepLink' => 'system/modules/deepLogin/classes/ModuleLoginDeepLink.php',
+	'postyou\LoginPage'       => 'system/modules/deepLogin/classes/LoginPage.php',
+	'postyou\ModuleDeepLogin' => 'system/modules/deepLogin/classes/ModuleDeepLogin.php',
 ));
 
 
@@ -34,5 +34,9 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'fe_login' => 'system/modules/deepLogin/templates',
+	'fe_login'            => 'system/modules/deepLogin/templates',
+	'mod_login_deep_1cl'  => 'system/modules/deepLogin/templates',
+	'mod_login_deep_2cl'  => 'system/modules/deepLogin/templates',
+	'mod_logout_deep_1cl' => 'system/modules/deepLogin/templates',
+	'mod_logout_deep_2cl' => 'system/modules/deepLogin/templates',
 ));

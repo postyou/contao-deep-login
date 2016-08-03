@@ -2,7 +2,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2016 Leo Feyer
  *
  * @package   deepLogin
  * @author    Gerald Meier

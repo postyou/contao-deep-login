@@ -10,5 +10,5 @@
  * @copyright Postyou 2016
  */
 
-$GLOBALS['TL_LANG']['PTY']['login'][0] = "Login-Page";
-$GLOBALS['TL_LANG']['PTY']['login'][1] = "Login-Page";
+$GLOBALS['TL_LANG']['FMD']['deep_login'][0] = 'DeepLogin-Form';
+$GLOBALS['TL_LANG']['FMD']['deep_login'][1] = 'DeepLogin-Form';

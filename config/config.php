@@ -18,3 +18,4 @@ $GLOBALS['TL_HOOKS']['getPageStatusIcon'][] = array('postyou\LoginPage', 'getLog
 
 $GLOBALS['TL_PTY']['login']='postyou\LoginPage';
 
+$GLOBALS['FE_MOD']['user']['deep_login'] = 'postyou\ModuleDeepLogin';

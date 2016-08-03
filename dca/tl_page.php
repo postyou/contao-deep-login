@@ -2,7 +2,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2016 Leo Feyer
  *
  * @package   deepLogin
  * @author    Gerald Meier
@@ -22,7 +22,6 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['login'] = '
 {tabnav_legend:hide},tabindex,accesskey;
 {publish_legend},published,start,stop';
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['guests']['load_callback'][]=array('tl_page_deep_login', 'check4LoginPageType');
 
 $GLOBALS['TL_DCA']['tl_page']['list']['operations']['articles']['button_callback']=array('tl_page_deep_login', 'editArticles');
 
@@ -41,27 +40,6 @@ Class tl_page_deep_login extends \Backend {
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
-    }
-
-    public function loadCallBack($varValue,$dc){
-        $res=$dc->Database->prepare("Select autoforward from tl_page where id=?")->execute($dc->id)->fetchAssoc();
-        return $res['autoforward'];
-    }
-    public function saveCallBack($varValue,$dc){
-        $res=$dc->Database->prepare("Update tl_page set autoforward=? where id=?")->execute($varValue,$dc->id);
-        return null;
-    }
-
-
-    function check4LoginPageType($varValue,$dc){
-        if($dc->activeRecord->type=="login") {
-            $GLOBALS['TL_DCA']['tl_page']['fields']['guests']['eval']['readonly']=true;
-            return 1;
-        }
-        else{
-            $GLOBALS['TL_DCA']['tl_page']['fields']['guests']['eval']['readonly']=false;
-            return $varValue;
-        }
     }
 
     public function editArticles($row, $href, $label, $title, $icon)
