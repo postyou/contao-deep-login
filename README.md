@@ -8,24 +8,6 @@ How to use:
 3. (optional) Place a login-modul on the page, so that users how want to access a certain ressource with a (deep-)link can log-in. Beware: Do NOT use the jumpTo or JumpBack options of the module if you want to use it with deep-Linking.
 
 
-install:
-
-"require": {
-
-        "postyou/deepLogin": "dev-master"
-},
-
-
-"repositories": [
-
-        {
-        
-            "type": "vcs",
-            "url": "https://github.com/postyou/contao-deep-login"
-        }
-],
-
-
 ---------------------------------------
 
 Die Verwendeten Icons Stammen aus dem kostenlosen [FAM FAM FAM](http://www.famfamfam.com/lab/icons/silk/) Iconset.
